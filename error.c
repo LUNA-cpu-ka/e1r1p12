@@ -6,7 +6,7 @@
 /*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 23:11:54 by saait-si          #+#    #+#             */
-/*   Updated: 2024/04/19 23:14:28 by saait-si         ###   ########.fr       */
+/*   Updated: 2024/04/20 11:57:30 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	error(char	*msg)
 {
-	write(2, "Error\n", 6);
+	write(2, "Error:\t", 7);
 	write(2, msg, ft_strlen(msg));
 	exit (1);
 }
+ 

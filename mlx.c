@@ -1,22 +1,95 @@
+
 #include "so_long.h"
 
-void    mlx_function()
+void    put_wall(try *app)
 {
-    void    *mlx;
-    void    *mlx_win;
-    void    *img;
+    int i;
+    int j;
 
-    mlx = mlx_init();
-    mlx_win = mlx_new_window(mlx, 800, 600, "🇲🇦 Dima maghreb 🇲🇦");
-    // mlx_pixel_put(mlx, mlx_win, 640/2, 180/2, 0xF000FF);
-    //image = mlx_new_image(mlx, 1920, 1080);
-    // mlx_string_put(mlx, mlx_win, 400, 300, 0x2FB59F, "mariwana🇲🇦");
-    img = mlx_new_image(mlx, 78, 300);
+    i = 0;
+    while(app->dbl_ptr[i])
+    {
+        j = 0;
+        while (app->dbl_ptr[i][j])
+        {
+            if (app->dbl_ptr[i][j] == '1')
+                mlx_put_image_to_window(app->mlx, app->win, app->wall, j * 30, i * 30);
+            j++;
+        }
+        i++;
+    }
+}
+void    put_halwa(try *app)
+{
+    int i = 0;
+    int j;
+    while (app->dbl_ptr[i])
+    {
+        j = 0;
+        while (app->dbl_ptr[i][j])
+        {
+            if(app->dbl_ptr[i][j] == 'C')
+                mlx_put_image_to_window(app->mlx, app->win,app->halwa, j * 30, i * 30);
+            j++;
+        }
+        i++;
+    }
+    
+}
+void    put_player(try *app)
+{
+    int i = 0;
+    int j;
+    while (app->dbl_ptr[i])
+    {
+        j = 0;
+        while (app->dbl_ptr[i][j])
+        {
+            if(app->dbl_ptr[i][j] == 'P')
+                mlx_put_image_to_window(app->mlx, app->win,app->player, j * 30, i * 30);
+            j++;
+        }
+        i++;
+    }
+    
+}
+void    put_exit(try *app)
+{
+    int i = 0;
+    int j;
+    while (app->dbl_ptr[i])
+    {
+        j = 0;
+        while (app->dbl_ptr[i][j])
+        {
+            if(app->dbl_ptr[i][j] == 'E')
+                mlx_put_image_to_window(app->mlx, app->win,app->exit, j * 30, i * 30);
+            j++;
+        }
+        i++;
+    }
+}
 
-    // Your enchanted canvas is ready for artistic expression
-
-    // Time to gracefully dispose of the image
-    mlx_destroy_image(mlx, img);
-    mlx_loop(mlx);
- 
+void    draw_map(try *app)
+{ 
+    int i = 0;
+    int j;
+    while (app->dbl_ptr[i])
+    {
+        j = 0;
+        while (app->dbl_ptr[i][j])
+        {
+            mlx_put_image_to_window(app->mlx, app->win, app->ground, j * 30, i * 30);
+            if (app->dbl_ptr[i][j] == 'P')
+                mlx_put_image_to_window(app->mlx, app->win, app->player, j * 30, i * 30);
+            if (app->dbl_ptr[i][j] == 'E')
+                mlx_put_image_to_window(app->mlx, app->win, app->exit, j * 30, i * 30);
+            if (app->dbl_ptr[i][j] == 'C')
+                mlx_put_image_to_window(app->mlx, app->win, app->halwa, j * 30, i * 30);
+            if (app->dbl_ptr[i][j] == '1')
+                mlx_put_image_to_window(app->mlx, app->win, app->wall, j * 30, i * 30);
+            j++;
+        }
+        i++;
+    }
 }
